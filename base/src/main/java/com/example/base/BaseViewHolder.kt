@@ -7,8 +7,7 @@ import androidx.annotation.IdRes
 import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 //kotlin当中默认类都不能被继承，方法都不能被重写，除非被abstract修饰或者是open关键字 override子类才能重写或继承
-abstract class BaseViewHolder : RecyclerView.ViewHolder {
-    constructor(itemView: View) : super(itemView)
+abstract class BaseViewHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView) {
 
     @SuppressLint("UseSparseArrays")
     private val viewHashMap: MutableMap<Int, View?> =

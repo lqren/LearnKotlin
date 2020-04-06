@@ -1,6 +1,15 @@
 package com.example.lesson.entity
 
-class Lesson {
+class Lesson  constructor(var date: String?, var content: String?, var state: State?){
+//    var date: String? = date
+//    var content: String? = content
+//    var state: State? = state
+
+//    init{
+//        this.date = date
+//        this.content = content
+//        this.state = state
+//    }
     //enum class表示是一个特殊的class
     enum class State {
         PLAYBACK {
@@ -22,13 +31,5 @@ class Lesson {
         abstract fun stateName(): String?
     }
 
-     var date: String? = null
-     var content: String? = null
-     var state: State? = null
 
-    constructor(date: String?, content: String?, state: State?) {
-        this.date = date
-        this.content = content
-        this.state = state
-    }
 }

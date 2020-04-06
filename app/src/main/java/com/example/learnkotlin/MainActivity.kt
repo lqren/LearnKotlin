@@ -60,13 +60,20 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    //如果函数只有一个地方被调用，也为了防止其他地方调用，可以将这个函数放到调用他的函数里面去  内部函数是可以直接访问外部函数的属性的
+    //需要注意的是：函数嵌套的时候，被调用会生成额外的对象。要防止频繁调用函数，需要考虑性能问题
     private fun verify(user: User): Boolean {
-        if (user.username == null || user.username!!.length < 4) {
+
+//        if (user.username == null || user.username!!.length < 4) {
+        //如果user是空则直接赋值成0，如果不为空，则取他的length与4进行比较
+        if (user.username?.length ?: 0 < 4) {
+
             Utils.toast("用户名不合法")
             return false
         }
 
-        if (user.password == null || user.password!!.length < 4) {
+//        if (user.password == null || user.password!!.length < 4) {
+        if (user.password?.length ?: 0 < 4) {
             Utils.toast("密码不合法")
             return false
         }

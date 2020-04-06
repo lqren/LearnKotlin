@@ -12,8 +12,17 @@ public class Java {
         Utils.INSTANCE.toast("heihei");
 
         //java中调用kotlin中伴生对象创建的静态方法
-        BaseApplication.Companion.currentApplication();
+//        BaseApplication.Companion.currentApplication();
+//        BaseApplication.Companion.getCurrentApplication();
+
+        //对应方法加了 @JvmStatic 可以不用拿到companion对象
+//        BaseApplication.getCurrentApplication();
+
+        //指定方法名
+        BaseApplication.currentApplication();
+
         KotlinUtils.dp2px(6f);
+        Utils.INSTANCE.toast("1");
 
         //当方法被@JvmStatic所修饰的时候，就可以直接通过类名.的方式调用
 //        BaseApplication.currentApplication();

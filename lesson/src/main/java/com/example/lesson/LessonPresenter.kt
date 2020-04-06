@@ -42,12 +42,22 @@ class LessonPresenter {
     }
 
     fun showPlayback() {
-        val playbackLessons: MutableList<Lesson> = ArrayList()
-        for (lesson in lessons) {
-            if (lesson.state === Lesson.State.PLAYBACK) {
-                playbackLessons.add(lesson)
-            }
-        }
-        activity!!.showResult(playbackLessons)
+//        val playbackLessons: MutableList<Lesson> = ArrayList()
+//        for (lesson in lessons) {
+//            if (lesson.state === Lesson.State.PLAYBACK) {
+//                playbackLessons.add(lesson)
+//            }
+//        }
+
+        //简化一：
+//        lessons.forEach{
+//            if(it.state == Lesson.State.PLAYBACK)
+//                playbackLessons.add(it)
+//        }
+
+        //简化二：
+        activity!!.showResult(lessons.filter {
+            it.state == Lesson.State.PLAYBACK
+        })
     }
 }

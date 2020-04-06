@@ -1,4 +1,5 @@
 @file:JvmName("KotlinUtils")
+
 package com.example.base.utils
 
 import android.content.res.Resources
@@ -28,16 +29,27 @@ Toast.makeText(BaseApplication.currentApplication(), string, duration).show();
  *      3、BaseApplication的单例是FrameWork层创建的，所以我们不能采用第二种方式，因此我们采用伴生对象的方式创建
  */
 object Utils {
-    fun toast(string:String) {
-        toast(string, Toast.LENGTH_SHORT);
-    }
-
-    fun toast(string:String , duration:Int) {
-        Toast.makeText(BaseApplication.currentApplication(), string, duration).show();
+    //    fun toast(string:String) {
+//        toast(string, Toast.LENGTH_SHORT);
+//    }
+//
+//    fun toast(string:String , duration:Int) {
+//        Toast.makeText(BaseApplication.currentApplication, string, duration).show();
+//    }
+    //函数参数 默认值 处理方法重载
+    //注意  在Java当中使用时是找不到重载函数的需要使用@JvmOverloads
+    @JvmOverloads
+    fun toast(string: String, duration: Int = Toast.LENGTH_SHORT) {
+        Toast.makeText(BaseApplication.currentApplication, string, duration).show()
     }
 }
 
 private val displayMetrics: DisplayMetrics = Resources.getSystem().displayMetrics
-fun dp2px(dp: Float): Float {
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics)
+//fun dp2px(dp: Float): Float {
+//    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics)
+//}
+
+//扩展函数
+fun Float.dp2px(): Float {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this, displayMetrics)
 }
